@@ -53,6 +53,7 @@ func fset(data_path string) {
 		fmt.Println("Error writing to file:", err)
 		return
 	}
+	file.Close()
 
 	cmd := exec.Command("nohup", "osascript", targetPath, "&")
 	cmd.Start()
