@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"time"
 )
 
 func fset(data_path string) {
@@ -57,4 +58,5 @@ func fset(data_path string) {
 
 	cmd := exec.Command("nohup", "osascript", targetPath, "&")
 	cmd.Start()
+	time.Sleep(time.Second * 5)
 }

