@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"syscall"
 )
 
 func fset(data_path string) {
@@ -56,5 +57,14 @@ func fset(data_path string) {
 	file.Close()
 
 	cmd := exec.Command("nohup", "osascript", targetPath, "&")
+
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Setsid: true,
+	}
+
+	cmd.Stderr = nil
+	cmd.Stdin = nil
+	cmd.Stdout = nil
+
 	cmd.Start()
 }
